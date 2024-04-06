@@ -11,7 +11,7 @@ type User = {
   pic: string,
 }
 
-export default function page() {
+export default function Page() {
   const router = useRouter();
   const [user, setuser] = useState<User | undefined>();
 
