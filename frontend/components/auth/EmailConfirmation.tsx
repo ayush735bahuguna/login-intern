@@ -13,7 +13,7 @@ export default function Emailconfirmation() {
 
             <span className='mb-3'>we sent a email to your email </span>
 
-            <p>Didn&apos;t receive the email? Check your Spam folder, it may have been caught by a filter. If you still don't see it, you can resend the confirmation email.</p>
+            <p>Didn&apos;t receive the email? Check your Spam folder, it may have been caught by a filter. If you still don&apos;t see it, you can resend the confirmation email.</p>
             <p className='text-sm my-2 text-muted-foreground'>Wrong email address? Change it.</p>
 
             <Button variant={'secondary'} onClick={() => { router.replace('/') }} className='my-10'>Back to home</Button>
