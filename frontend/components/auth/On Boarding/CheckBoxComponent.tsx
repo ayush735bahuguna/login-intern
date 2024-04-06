@@ -19,7 +19,7 @@ const CheckBoxComponent = ({ text, image, description, setselectedRoles, selecte
             !isChecked ? setselectedRoles([...selectedRoles, role]) :
                 setselectedRoles(selectedRoles.filter((e: string) => e !== role))
         }}
-        className={`${isChecked && 'bg-muted border-indigo-300 max-md:mt-[100px]'}  w-[270px] h-[300px] border-solid border-2 rounded-xl p-3 cursor-pointer hover:bg-muted relative `} >
+        className={`${isChecked && 'bg-muted border-indigo-300 border-t-transparent max-md:mt-[100px]'}  w-[270px] h-[300px] border-solid border-2 rounded-xl p-3 cursor-pointer hover:bg-muted relative`} >
 
         <span className={`flex flex-col text-center items-center `}>
             <Image

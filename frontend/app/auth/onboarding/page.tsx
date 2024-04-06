@@ -10,12 +10,13 @@ export default function Page() {
     const [welcomeScreen, setwelcomeScreen] = useState<boolean>(false);
     const [ImageFile, setImageFile] = useState<File | undefined>(undefined);
     const [location, setlocation] = useState<string | undefined>(undefined);
+
     useEffect(() => {
         if (window) {
             const data = localStorage.getItem('userData');
             if (data !== null) {
                 const parsedData = JSON.parse(data);
-                parsedData ? router.push('/') : router.push('/auth/onboarding')
+                parsedData.onBoarding ? router.push('/') : router.push('/auth/onboarding')
             } else {
                 router.push('/')
             }
