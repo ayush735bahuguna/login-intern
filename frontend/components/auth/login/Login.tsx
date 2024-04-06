@@ -25,7 +25,12 @@ export default function Login() {
                 data && localStorage.setItem("userData", JSON.stringify(data));
                 data?.onBoarding ? router.push('/') : router.push('/auth/onboarding');
             } catch (error) {
-                seterror(error?.response?.data?.message);
+                const axiosError = error as { response?: { data?: { message?: string } } };
+                if (axiosError.response && axiosError.response.data && axiosError.response.data.message) {
+                    seterror(axiosError.response.data.message);
+                } else {
+                    seterror("An error occurred. Please try again later.");
+                }
                 setTimeout(() => {
                     seterror(undefined);
                 }, 5000)

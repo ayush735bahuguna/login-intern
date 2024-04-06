@@ -1,25 +1,25 @@
 "use client"
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input'
-import { Camera, Loader2, X } from 'lucide-react';
-import React, { useEffect, useState } from 'react'
+import { Camera, X } from 'lucide-react';
+import React, { useState } from 'react'
 
-type Data = {
-    setwelcomeScreen: Function, setImageFile: Function, setlocation: Function, location: string
-}
+type Data = { setwelcomeScreen: Function, setImageFile: Function, setlocation: Function, location: string }
 
 export default function Welcome({ setwelcomeScreen, setImageFile, setlocation, location }: Data) {
 
-    const [file, setfile] = useState();
+    const [file, setfile] = useState<File | null>(null);
     const [fileUrl, setfileUrl] = useState<string | undefined>(undefined);
 
     const ImageHandler = async (img: File) => {
-        setfile(img);
-        var reader: FileReader = new FileReader();
-        reader.onload = function () {
-            setfileUrl(reader.result);
-        };
-        reader.readAsDataURL(img);
+        if (img) {
+            setfile(img);
+            var reader: FileReader = new FileReader();
+            reader.onload = function () {
+                reader.result && setfileUrl(reader.result.toString());
+            };
+            reader.readAsDataURL(img);
+        }
     }
 
     const SubmitHandler = async () => {
@@ -63,7 +63,13 @@ export default function Welcome({ setwelcomeScreen, setImageFile, setlocation, l
 
 
 
-                <Input type='file' id='imageInput' className='hidden' onChange={(e: React.ChangeEvent<HTMLInputElement>) => { ImageHandler(e?.target?.files[0]) }} />
+                <Input type='file' id='imageInput' className='hidden'
+                    onChange={(e) => {
+                        if (e.target.files && e.target.files.length > 0) {
+                            ImageHandler(e.target.files[0]);
+                        }
+                    }}
+                />
 
 
                 <div className="flex flex-col w-fit pb-6 items-start justify-center">
@@ -80,7 +86,7 @@ export default function Welcome({ setwelcomeScreen, setImageFile, setlocation, l
 
             <Input type='text' id='locationInput' placeholder='Enter a location' className='mt-6' value={location} onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setlocation(e?.target?.value) }} />
 
-            <Button variant={'default'} disabled={!location?.length > 0} onClick={SubmitHandler} className='px-6 my-7'>  Next</Button>
+            <Button variant={'default'} disabled={!(location?.length > 0)} onClick={SubmitHandler} className='px-6 my-7'>  Next</Button>
 
         </div>
     )
