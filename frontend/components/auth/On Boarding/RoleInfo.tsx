@@ -60,12 +60,12 @@ export default function RoleInfo({ setwelcomeScreen, ImageFile, location }: prop
         try {
             setloading(true)
             if (user) {
-                var url = ImageFile ? 'http://localhost:3001/api/user/updatePic' : "http://localhost:3001/api/user/updateDetails"
+                var url = ImageFile ? 'https://login-intern.onrender.com/api/user/updatePic' : "https://login-intern.onrender.com/api/user/updateDetails"
 
                 const { data } = await axios.put(url, { image: ImageFile || 'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg', userId: user?._id, location: location, role: selectedRoles }, ImageFile && { headers: { "Content-Type": "multipart/form-data" } })
 
                 localStorage.setItem('userData', JSON.stringify(data.data));
-                await axios.post('http://localhost:3001/api/sendEmail', { userEmail: user?.email });
+                await axios.post('https://login-intern.onrender.com/api/sendEmail', { userEmail: user?.email });
 
                 setemailConfermationPage(true);
                 setloading(false)

@@ -21,7 +21,7 @@ export default function Login() {
         if (Password.length > 5) {
             setisloading(true);
             try {
-                const { data } = await axios.post('http://localhost:3001/api/user/login', { email: Email, password: Password })
+                const { data } = await axios.post('https://login-intern.onrender.com/api/user/login', { email: Email, password: Password })
                 data && localStorage.setItem("userData", JSON.stringify(data));
                 data?.onBoarding ? router.push('/') : router.push('/auth/onboarding');
             } catch (error) {
