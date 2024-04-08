@@ -85,7 +85,7 @@ export default function RoleInfo({ setwelcomeScreen, ImageFile, location }: prop
                     <div onClick={() => { setwelcomeScreen(false) }} className='w-[40px] h-[40px] rounded-md bg-muted flex hover:bg-slate-300 cursor-pointer justify-center items-center absolute top-3 left-3 '><ArrowLeft /></div>
 
                     <div className='text-4xl mb-1 mt-10 text-center max-md:mt-16'>What brings you to <span className='text-sky-600'>gitInit</span></div>
-                    <div className='md:mb-[100px] text-muted-foreground text-center max-md:mb-5'>Select the option that describe you, Don`&apos;t worry, you can explore other options later</div>
+                    <div className='md:mb-[100px] text-muted-foreground text-center max-md:mb-5'>Select the option that describe you, Don&apos;t worry, you can explore other options later</div>
 
                     <div className="flex gap-6 flex-wrap items-center justify-center">
                         {Data?.map((e, i) => {

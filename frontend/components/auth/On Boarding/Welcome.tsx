@@ -30,7 +30,7 @@ export default function Welcome({ setwelcomeScreen, setImageFile, setlocation, l
     return (
         <div className='px-5 pt-10 max-md:w-full mx-auto md:w-1/2'>
 
-            <div className='text-4xl mb-2'>Welcome! Let`&apos;s create your profile</div>
+            <div className='text-4xl mb-2'>Welcome! Let&apos;s create your profile</div>
             <div className='text-muted-foreground pb-10'>Let others get to know you better! You can do these later</div>
 
             <div className='font-bold mb-5'>Add an avatar</div>
